@@ -19,5 +19,6 @@ contextBridge.exposeInMainWorld(
 
 // 這個作法是在 main.js 裡面 require 這個檔案
 // ipcMain.on("toMoment-fulltime", (event, ...args) => {
-//     BrowserWindow.getFocusedWindow().webContents.send("fromMoment-fulltime", moment().format());
+//     event.sender.send("fromMoment-fulltime", moment().format());
+//     //BrowserWindow.getFocusedWindow().webContents.send("fromMoment-fulltime", moment().format());
 // });

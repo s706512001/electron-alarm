@@ -4,8 +4,8 @@ const elAlarm = document.querySelector('.alarm-time');
 
 // ----------------------
 // 這是在 main.js require moment.js 時使用的
-// window.api.receive("fromMoment-fulltime", (...args) => {
-    
+// window.api.receive("fromMoment-fulltime", (args) => {
+//     console.log(args[0]);
 // });
 // window.api.send("toMoment-fulltime");
 // ----------------------
