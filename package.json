@@ -1,0 +1,26 @@
+{
+  "name": "electron-alarm",
+  "version": "1.0.0",
+  "description": "nodeIntegration and contextIsolation practice on Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^12.0.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "whatwg-url": "^8.5.0"
+  }
+}

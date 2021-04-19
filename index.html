@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+        <title>Countdown</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        We are using Node.js <span id="node-version"></span>, Chromium <span id="chrome-version"></span>, and Electron
+        <span id="electron-version"></span>.
+
+        <hr>
+        <div class="now-time"></div>
+        <input class="alarm-time" type="text">
+
+        <script src="./countdown.js"></script>
+
+        <!-- <script>
+            console.log("index")
+            window.api.receive("fromMain", (data) => {
+                console.log(`Received ${data} from main process`);
+            });
+            window.api.send("toMain", "some data", "test");
+        </script> -->
+
+        <!-- You can also require other files to run in this process -->
+        <!-- <script src="./renderer.js"></script> -->
+    </body>
+</html>
