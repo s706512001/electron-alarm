@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, Menu, Tray } = require("electron");
 const path = require("path");
 
 let mainWindow;
@@ -18,6 +18,12 @@ function createWindow() {
 
     // and load the index.html of the app.
     mainWindow.loadFile("index.html");
+
+    mainWindow.on("minimize", () => {
+        mainWindow.hide();
+    });
+
+    createTray();
     
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
@@ -53,3 +59,34 @@ ipcMain.on("toMain", (event, ...args) => {
         mainWindow.webContents.send("fromMain", args[0]);
     }
 });
+
+ipcMain.on("showWindow", (event) => {
+    if (mainWindow instanceof BrowserWindow) {
+        mainWindow.restore();
+        mainWindow.show();
+    }
+});
+
+function createTray() {
+    let appIcon = null;
+    const iconPath = path.join(__dirname, "clock.png");
+
+    const contextMenu = Menu.buildFromTemplate([{
+            label: "AlarmClock",
+            click() {
+                mainWindow.show();
+            }
+        },
+        {
+            label: "Quit",
+            click() {
+                mainWindow.removeAllListeners("close");
+                mainWindow.close();
+            }
+        }
+    ]);
+
+    appIcon = new Tray(iconPath);
+    appIcon.setToolTip("Alarm Clock");
+    appIcon.setContextMenu(contextMenu);
+}
