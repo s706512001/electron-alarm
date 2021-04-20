@@ -4,7 +4,10 @@
   "description": "nodeIntegration and contextIsolation practice on Electron.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": "",
   "keywords": [
@@ -17,11 +20,21 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^12.0.2"
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5"
   },
   "dependencies": {
     "moment": "^2.29.1",
     "node-notifier": "^9.0.1",
     "whatwg-url": "^8.5.0"
+  },
+  "build": {
+      "appId": "com.richard.app.electronalarm",
+      "mac": {
+          "icon": "./clock.png"
+      },
+      "win": {
+          "icon": "./clock.png"
+      }
   }
 }
