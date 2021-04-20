@@ -11,9 +11,16 @@ contextBridge.exposeInMainWorld(
         time: (fullTimeStr) => {
             return fullTimeStr ? moment(fullTimeStr).format("HH:mm:ss") : moment().format("HH:mm:ss");
         },
-        add: (second) => {
-            return moment().add(second, "second").format("HH:mm:ss");
+        add: (second, fullTimeStr) => {
+            let time = fullTimeStr ? moment(fullTimeStr) : moment();
+            return time.add(second, "second").format("HH:mm:ss");
         },
+        diff: (leftTimeStr, rightTimeStr) => {
+            if (!leftTimeStr || !rightTimeStr) {
+                return 0;
+            }
+            return moment(leftTimeStr, "HH:mm:ss").diff(moment(rightTimeStr, "HH:mm:ss"));
+        }
     }
 );
 

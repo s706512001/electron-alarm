@@ -14,14 +14,16 @@ const elAlarm = document.querySelector('.alarm-time');
 
 elAlarm.addEventListener('change', onAlarmTextChange);
 
+let fullTime = window.moment.fullTime();
+
 let nowTime;
 let alarmTime;
 
-const now = window.moment.time();
+const now = window.moment.time(fullTime);
 nowTime = now;
 elNow.innerHTML = now;
 
-const alarm = window.moment.add(5);
+const alarm = window.moment.add(5, fullTime);
 alarmTime = alarm;
 if (elAlarm instanceof HTMLInputElement) {
     elAlarm.value = alarm;
@@ -35,11 +37,21 @@ function timer() {
     nowTime = time;
     elNow.innerHTML = time;
 
+    check();
+
     setTimeout(() => {
         timer();
     }, 1000);
 }
 
+function check() {
+    const diff = window.moment.diff(nowTime, alarmTime);
+    if (diff === 0) {
+        const msg = "It's " + alarmTime + ". Wake Up!";
+        window.notifier.notice(msg);
+    }
+}
+
 function onAlarmTextChange(event) {
-    
+    alarmTime = event.target.value;
 }

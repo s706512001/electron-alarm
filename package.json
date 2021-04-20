@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "moment": "^2.29.1",
+    "node-notifier": "^9.0.1",
     "whatwg-url": "^8.5.0"
   }
 }

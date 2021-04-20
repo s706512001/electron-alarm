@@ -1,7 +1,8 @@
 // All of the Node.js APIs are available in the preload process.
 
 const { ipcRenderer, contextBridge } = require("electron");
-const moment = require("./moment.js");
+require("./moment.js");
+require("./notifier.js");
 
 // It has the same sandbox as a Chrome extension.
 window.addEventListener("DOMContentLoaded", () => {
